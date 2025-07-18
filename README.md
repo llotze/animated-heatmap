@@ -1,36 +1,146 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Animated Commit Heatmap
+
+A customizable GitHub-style commit heatmap with smooth fill animations, designed for creating GIFs to showcase private repository activity on portfolios and README files.
+
+## Overview
+
+This project provides an animated commit heatmap component that visually represents coding activity in the familiar GitHub contribution graph style. The primary purpose is to generate custom GIFs that can be used to display private repository commit patterns where actual GitHub contribution graphs cannot be shared publicly.
+
+## Features
+
+- **GitHub-accurate styling** - Matches GitHub's exact colors and visual design for both light and dark modes
+- **Smooth animations** - Column-by-column fill animation with customizable timing
+- **Responsive design** - Adapts to light/dark mode preferences automatically
+- **Customizable data** - Easy to modify commit levels and patterns
+- **GIF-ready output** - Optimized for direct GIF recording
+
+## Use Cases
+
+- **Portfolio websites** - Showcase coding activity from private repositories
+- **README files** - Add dynamic visual elements to project documentation
+- **Social media** - Create engaging content showing development progress
+- **Presentations** - Visual representation of coding productivity over time
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18+ 
+- npm, yarn, pnpm, or bun
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/llotze/animated-heatmap.git
+cd animated-heatmap
+```
+
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
+
+3. Run the development server:
 ```bash
 npm run dev
 # or
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Creating GIFs
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Recommended Workflow with ScreenToGif
 
-## Learn More
+1. **Download ScreenToGif** - Get it from [screentogif.com](https://www.screentogif.com/)
+2. **Customize the data** - Modify the `getRandomLevel()` function or replace with your actual commit data
+3. **Adjust timing** - Change the animation speed by modifying the interval value (currently 80ms)
+4. **Position and record**:
+   - Set your browser to the desired theme (light/dark)
+   - Ensure the heatmap is centered and fully visible
+   - Open ScreenToGif and select the recording area around the heatmap
+   - Click "Start Animation" and begin recording
+   - Stop recording after one complete animation cycle
+5. **Edit and export** - Use ScreenToGif's built-in editor to trim, optimize, and export your GIF
 
-To learn more about Next.js, take a look at the following resources:
+### ScreenToGif Recording Tips
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Use a consistent frame rate (15-30 FPS works well)
+- Keep the recording area tight around the heatmap for smaller file sizes
+- Record multiple cycles if you want a longer loop
+- Use ScreenToGif's optimization features to reduce file size
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Customization
 
-## Deploy on Vercel
+### Commit Data
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The component uses a random data generator by default. To use your own data:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```javascript
+// Replace the getRandomLevel() function with your data
+const commitData = {
+  // Your commit levels (0-5) for each cell
+};
+```
+
+### Animation Timing
+
+Adjust the fill speed by changing the interval value:
+
+```javascript
+// Faster animation (40ms intervals)
+setInterval(() => {
+  // animation logic
+}, 40);
+
+// Slower animation (120ms intervals)  
+setInterval(() => {
+  // animation logic
+}, 120);
+```
+
+### Visual Styling
+
+The component uses GitHub's exact color palette and can be customized by modifying the `getColor()` function.
+
+## Component Structure
+
+```
+src/
+├── app/
+│   ├── components/
+│   │   └── CommitHeatmap.js    # Main heatmap component
+│   ├── page.js                 # Demo page
+│   └── globals.css             # Global styles
+```
+
+## Technical Details
+
+- **Framework**: Next.js 14+ with App Router
+- **Styling**: Tailwind CSS with custom hex colors
+- **State Management**: React hooks (useState, useEffect, useRef)
+- **Animation**: CSS transitions with JavaScript timing control
+- **Theme Support**: Automatic light/dark mode detection
+
+## Browser Compatibility
+
+- Chrome 90+
+- Firefox 88+
+- Safari 14+
+- Edge 90+
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'feat: add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
