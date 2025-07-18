@@ -49,14 +49,14 @@ export default function CommitHeatmap() {
     return () => clearInterval(interval);
   }, [isAnimating]);
 
-  // Helper to get the color for each level (GitHub heatmap colors + extra dark)
+  // Helper to get the color for each level (GitHub heatmap colors for light/dark mode)
   const getColor = (level) => {
     switch (level) {
-      case 2: return 'bg-[#40c463]'; // medium green
-      case 3: return 'bg-[#30a14e]'; // dark green
-      case 4: return 'bg-[#216e39]'; // darkest green
-      case 5: return 'bg-[#14351b]'; // extra dark green
-      default: return 'bg-zinc-200 dark:bg-zinc-800'; // empty
+      case 2: return 'bg-[#9be9a8] dark:bg-[#0e4429] border border-[#95e5a3] dark:border-[#0c3f26]'; // light green - very subtle border
+      case 3: return 'bg-[#40c463] dark:bg-[#006d32] border border-[#3cbf5e] dark:border-[#00652f]'; // medium green - very subtle border
+      case 4: return 'bg-[#30a14e] dark:bg-[#26a641] border border-[#2e9e4b] dark:border-[#24a03f]'; // dark green - very subtle border
+      case 5: return 'bg-[#216e39] dark:bg-[#39d353] border border-[#206a37] dark:border-[#37ce50]'; // darkest green - very subtle border
+      default: return 'bg-[#ebedf0] dark:bg-[#161b22] border border-[#e8eaed] dark:border-[#14191f]'; // empty - very subtle border
     }
   };
 
@@ -66,9 +66,9 @@ export default function CommitHeatmap() {
   );
 
   return (
-    <div className="text-center p-4 bg-zinc-50 dark:bg-zinc-800/30 rounded-md">
+    <div className="text-center p-4 rounded-md transform scale-150 border border-[#d5dce3] dark:border-[#30363d]">
       <button
-        className="mb-8 px-4 py-2 rounded bg-zinc-800 text-white font-semibold hover:bg-zinc-700 transition-colors"
+        className="mb-8 px-4 py-2 rounded bg-gray-50 dark:bg-[#21262d] text-gray-800 dark:text-white font-semibold hover:bg-gray-200 dark:hover:bg-[#30363d] transition-colors border border-[#d5dce3] dark:border-[#30363d]"
         onClick={() => setIsAnimating(true)}
         disabled={isAnimating}
       >
@@ -78,11 +78,9 @@ export default function CommitHeatmap() {
         <div className="grid grid-flow-col gap-1" style={{ gridTemplateRows: `repeat(${rows}, 1fr)` }}>
           {grid.map((colArr, colIdx) =>
             colArr.map(cell => {
-              // Find the index in fillOrder for this cell
               const fillIdx = fillOrder.findIndex(
                 ({ row, col }) => row === cell.row && col === cell.col
               );
-              // Only show color if cell is filled
               const level = fillIdx > -1 && fillIdx < filledCells ? levels[cell.col][cell.row] : 0;
               return (
                 <div
