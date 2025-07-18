@@ -13,13 +13,15 @@ This project provides an animated commit heatmap component that visually represe
 The component features smooth column-by-column animations that fill the heatmap with GitHub-accurate colors, supporting both light and dark themes. Perfect for developers who want to showcase their coding activity from private repositories on portfolios, README files, or social media.
 
 </td>
-<td width="50%" valign="top">
+<td width="50%" valign="top" align="center">
 
+<img src="public/heatmapfill_light.gif" alt="Light Mode Heatmap Animation" width="240"><br>
 **Light Mode**
-![Light Mode Heatmap Animation](public/heatmapfill_light.gif)
 
+
+
+<img src="public/heatmapfill_dark.gif" alt="Dark Mode Heatmap Animation" width="240"><br>
 **Dark Mode**
-![Dark Mode Heatmap Animation](public/heatmapfill_dark.gif)
 
 </td>
 </tr>
