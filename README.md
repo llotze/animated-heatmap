@@ -4,7 +4,26 @@ A customizable GitHub-style commit heatmap with smooth fill animations, designed
 
 ## Overview
 
+<table>
+<tr>
+<td width="50%" valign="top">
+
 This project provides an animated commit heatmap component that visually represents coding activity in the familiar GitHub contribution graph style. The primary purpose is to generate custom GIFs that can be used to display private repository commit patterns where actual GitHub contribution graphs cannot be shared publicly.
+
+The component features smooth column-by-column animations that fill the heatmap with GitHub-accurate colors, supporting both light and dark themes. Perfect for developers who want to showcase their coding activity from private repositories on portfolios, README files, or social media.
+
+</td>
+<td width="50%" valign="top">
+
+**Light Mode**
+![Light Mode Heatmap Animation](public/heatmapfill_light.gif)
+
+**Dark Mode**
+![Dark Mode Heatmap Animation](public/heatmapfill_dark.gif)
+
+</td>
+</tr>
+</table>
 
 ## Features
 
